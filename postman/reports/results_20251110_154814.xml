@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="GreenMarket API - json-server Compatible" tests="14" time="0.135">
+  <testsuite name="1. Gestión de Usuarios / CP-001: Crear Usuario (POST)" id="44578ef3-d3c3-4eb2-836e-284dad942e84" timestamp="2025-11-10T18:48:16.607Z" tests="5" failures="0" errors="0" time="0.053">
+    <testcase name="Status code es 201 Created" time="0.053" classname="1GestionDeUsuariosCp001CrearUsuarioPost"/>
+    <testcase name="Content-Type es application/json" time="0.053" classname="1GestionDeUsuariosCp001CrearUsuarioPost"/>
+    <testcase name="Response contiene id del usuario" time="0.053" classname="1GestionDeUsuariosCp001CrearUsuarioPost"/>
+    <testcase name="Email está en la respuesta" time="0.053" classname="1GestionDeUsuariosCp001CrearUsuarioPost"/>
+    <testcase name="Tiempo de respuesta menor a 2000ms" time="0.053" classname="1GestionDeUsuariosCp001CrearUsuarioPost"/>
+  </testsuite>
+  <testsuite name="1. Gestión de Usuarios / CP-002: Listar Usuarios (GET)" id="b8831eaf-9209-4685-ad5f-e35628e6dfe9" timestamp="2025-11-10T18:48:16.607Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="Status code es 200 OK" time="0.007" classname="1GestionDeUsuariosCp002ListarUsuariosGet"/>
+    <testcase name="Response es un array" time="0.007" classname="1GestionDeUsuariosCp002ListarUsuariosGet"/>
+    <testcase name="Cada usuario tiene campos requeridos" time="0.007" classname="1GestionDeUsuariosCp002ListarUsuariosGet"/>
+  </testsuite>
+  <testsuite name="1. Gestión de Usuarios / CP-003: Obtener Usuario por ID (GET)" id="d2e28f58-6672-444e-ae6e-5ca433adf459" timestamp="2025-11-10T18:48:16.607Z" tests="2" failures="0" errors="0" time="0.006">
+    <testcase name="Status code es 200 OK" time="0.006" classname="1GestionDeUsuariosCp003ObtenerUsuarioPorIdGet"/>
+    <testcase name="Response contiene datos del usuario" time="0.006" classname="1GestionDeUsuariosCp003ObtenerUsuarioPorIdGet"/>
+  </testsuite>
+  <testsuite name="1. Gestión de Usuarios / CP-004: Usuario Inexistente (404)" id="410cac62-72a1-4bb1-973a-29ba82fd59b0" timestamp="2025-11-10T18:48:16.607Z" tests="1" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 404 Not Found" time="0.005" classname="1GestionDeUsuariosCp004UsuarioInexistente404"/>
+  </testsuite>
+  <testsuite name="2. Catálogo de Productos / CP-005: Listar Productos" id="d6c03551-d645-4665-a0dc-9b777c04c7fb" timestamp="2025-11-10T18:48:16.607Z" tests="5" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 200 OK" time="0.005" classname="2CatalogoDeProductosCp005ListarProductos"/>
+    <testcase name="Response es un array de productos" time="0.005" classname="2CatalogoDeProductosCp005ListarProductos"/>
+    <testcase name="Cada producto tiene campos obligatorios" time="0.005" classname="2CatalogoDeProductosCp005ListarProductos"/>
+    <testcase name="Precio es un número positivo" time="0.005" classname="2CatalogoDeProductosCp005ListarProductos"/>
+    <testcase name="Tiempo de respuesta menor a 2000ms" time="0.005" classname="2CatalogoDeProductosCp005ListarProductos"/>
+  </testsuite>
+  <testsuite name="2. Catálogo de Productos / CP-006: Filtrar por Categoría" id="233d46e4-55e7-46fc-88e2-9f31bf0e3d59" timestamp="2025-11-10T18:48:16.607Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 200 OK" time="0.005" classname="2CatalogoDeProductosCp006FiltrarPorCategoria"/>
+    <testcase name="Productos filtrados por categoría" time="0.005" classname="2CatalogoDeProductosCp006FiltrarPorCategoria"/>
+  </testsuite>
+  <testsuite name="2. Catálogo de Productos / CP-007: Obtener Producto por ID" id="d6dea5cf-b06e-4d0c-a8b9-9d7d33402496" timestamp="2025-11-10T18:48:16.607Z" tests="3" failures="0" errors="0" time="0.004">
+    <testcase name="Status code es 200 OK" time="0.004" classname="2CatalogoDeProductosCp007ObtenerProductoPorId"/>
+    <testcase name="Response contiene producto con detalles completos" time="0.004" classname="2CatalogoDeProductosCp007ObtenerProductoPorId"/>
+    <testcase name="ID del producto coincide" time="0.004" classname="2CatalogoDeProductosCp007ObtenerProductoPorId"/>
+  </testsuite>
+  <testsuite name="2. Catálogo de Productos / CP-008: Producto No Encontrado" id="362979d9-dd15-4196-8ff6-4ca9514b1c53" timestamp="2025-11-10T18:48:16.607Z" tests="1" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 404 Not Found" time="0.005" classname="2CatalogoDeProductosCp008ProductoNoEncontrado"/>
+  </testsuite>
+  <testsuite name="3. Órdenes de Compra / CP-009: Crear Orden" id="5a55767d-ada5-41f9-a522-6786d3fa6c3d" timestamp="2025-11-10T18:48:16.607Z" tests="4" failures="0" errors="0" time="0.014">
+    <testcase name="Status code es 201 Created" time="0.014" classname="3OrdenesDeCompraCp009CrearOrden"/>
+    <testcase name="Response contiene id de la orden" time="0.014" classname="3OrdenesDeCompraCp009CrearOrden"/>
+    <testcase name="Orden contiene items" time="0.014" classname="3OrdenesDeCompraCp009CrearOrden"/>
+    <testcase name="Orden contiene total" time="0.014" classname="3OrdenesDeCompraCp009CrearOrden"/>
+  </testsuite>
+  <testsuite name="3. Órdenes de Compra / CP-010: Listar Órdenes" id="c08525dc-1689-412b-a472-eab1918a4b50" timestamp="2025-11-10T18:48:16.607Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 200 OK" time="0.005" classname="3OrdenesDeCompraCp010ListarOrdenes"/>
+    <testcase name="Response es un array de órdenes" time="0.005" classname="3OrdenesDeCompraCp010ListarOrdenes"/>
+  </testsuite>
+  <testsuite name="3. Órdenes de Compra / CP-011: Obtener Orden por ID" id="bd90446e-ba63-46d4-b391-6ee7b32fdfc1" timestamp="2025-11-10T18:48:16.607Z" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="Status code es 200 OK" time="0.004" classname="3OrdenesDeCompraCp011ObtenerOrdenPorId"/>
+    <testcase name="Orden contiene información completa" time="0.004" classname="3OrdenesDeCompraCp011ObtenerOrdenPorId"/>
+  </testsuite>
+  <testsuite name="4. Reseñas de Clientes / CP-012: Crear Reseña" id="453ce9ae-21cf-4c6a-aeee-3d182b0a3d1b" timestamp="2025-11-10T18:48:16.607Z" tests="3" failures="0" errors="0" time="0.012">
+    <testcase name="Status code es 201 Created" time="0.012" classname="4ResenasDeClientesCp012CrearResena"/>
+    <testcase name="Response contiene id de la reseña" time="0.012" classname="4ResenasDeClientesCp012CrearResena"/>
+    <testcase name="Rating está en rango válido" time="0.012" classname="4ResenasDeClientesCp012CrearResena"/>
+  </testsuite>
+  <testsuite name="4. Reseñas de Clientes / CP-013: Listar Reseñas" id="abb2e700-1268-4278-892b-33435cfd4723" timestamp="2025-11-10T18:48:16.607Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 200 OK" time="0.005" classname="4ResenasDeClientesCp013ListarResenas"/>
+    <testcase name="Response es un array de reseñas" time="0.005" classname="4ResenasDeClientesCp013ListarResenas"/>
+  </testsuite>
+  <testsuite name="4. Reseñas de Clientes / CP-014: Filtrar Reseñas por Producto" id="9db21f3a-2c68-458b-acb7-9ce251af451c" timestamp="2025-11-10T18:48:16.607Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="Status code es 200 OK" time="0.005" classname="4ResenasDeClientesCp014FiltrarResenasPorProducto"/>
+    <testcase name="Reseñas filtradas por producto" time="0.005" classname="4ResenasDeClientesCp014FiltrarResenasPorProducto"/>
+  </testsuite>
+</testsuites>
