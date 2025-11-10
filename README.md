@@ -69,11 +69,82 @@ Ignacio Parada - Analista Geodésico IGM Chile
 Noviembre 2025
 ```
 
----
+GreenMarket API Testing - JSONPlaceholder Demo
 
-## 📸 **Screenshot Recomendado**
+□ Demo: Gestión de Usuarios (JSONPlaceholder)
+└ GET - Obtener Usuario
+  GET https://jsonplaceholder.typicode.com/users/1 [200 OK, 1.66kB, 857ms]
+  √  Status code es 200 OK
+  √  Content-Type es application/json
+  √  Response contiene datos del usuario
+  √  Tiempo de respuesta menor a 2000ms
 
-Captura pantalla de tu ejecución exitosa:
-```
-✓ 37 assertions passed
-0 failed
+└ GET - Listar Usuarios
+  GET https://jsonplaceholder.typicode.com/users [200 OK, 2.98kB, 147ms]
+  √  Status code es 200 OK
+  √  Response es un array
+  √  Cada usuario tiene campos requeridos
+
+└ POST - Crear Usuario
+  POST https://jsonplaceholder.typicode.com/users [201 Created, 1.34kB, 257ms]
+  √  Status code es 201 Created
+  √  Response contiene id del nuevo usuario
+  √  Email enviado está en la respuesta
+
+└ GET - Usuario Inexistente (404)
+  GET https://jsonplaceholder.typicode.com/users/99999 [404 Not Found, 1.15kB, 141ms]
+  √  Status code es 404 Not Found
+
+□ Demo: Posts (Productos)
+└ GET - Listar Posts
+  GET https://jsonplaceholder.typicode.com/posts?_limit=10 [200 OK, 3.95kB, 146ms]
+  √  Status code es 200 OK
+  √  Response es un array de posts
+  √  Cada post tiene estructura correcta
+
+└ GET - Obtener Post por ID
+  GET https://jsonplaceholder.typicode.com/posts/1 [200 OK, 1.44kB, 141ms]
+  √  Status code es 200 OK
+  √  Post contiene todos los campos
+
+└ POST - Crear Post
+  POST https://jsonplaceholder.typicode.com/posts [201 Created, 1.35kB, 261ms]
+  √  Status code es 201 Created
+  √  Response contiene id del nuevo post
+
+└ DELETE - Eliminar Post
+  DELETE https://jsonplaceholder.typicode.com/posts/1 [200 OK, 1.13kB, 260ms]
+  √  Status code es 200 OK
+
+□ Demo: Comentarios (Reseñas)
+└ GET - Listar Comentarios
+  GET https://jsonplaceholder.typicode.com/comments?postId=1 [200 OK, 2.65kB, 142ms]
+  √  Status code es 200 OK
+  √  Response es un array
+
+└ POST - Crear Comentario
+  POST https://jsonplaceholder.typicode.com/comments [201 Created, 1.39kB, 257ms]
+  √  Status code es 201 Created
+  √  Comentario contiene email
+
+┌─────────────────────────┬─────────────────────┬────────────────────┐
+│                         │            executed │             failed │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              iterations │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│                requests │                  10 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│            test-scripts │                  10 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│      prerequest-scripts │                   0 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              assertions │                  23 │                  0 │
+├─────────────────────────┴─────────────────────┴────────────────────┤
+│ total run duration: 3.5s                                           │
+├────────────────────────────────────────────────────────────────────┤
+│ total data received: 7.26kB (approx)                               │
+├────────────────────────────────────────────────────────────────────┤
+│ average response time: 260ms [min: 141ms, max: 857ms, s.d.: 206ms] │
+└────────────────────────────────────────────────────────────────────┘
+
+
