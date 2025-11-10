@@ -1,0 +1,598 @@
+{
+  "info": {
+    "name": "GreenMarket API - json-server Compatible",
+    "_postman_id": "greenmarket-jsonserver-2025",
+    "description": "Colección compatible con json-server - Solo rutas CRUD estándar",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "product_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "order_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Gestión de Usuarios",
+      "item": [
+        {
+          "name": "CP-001: Crear Usuario (POST)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Content-Type es application/json\", function () {",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response contiene id del usuario\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"id\");",
+                  "    pm.collectionVariables.set(\"user_id\", jsonData.id);",
+                  "});",
+                  "",
+                  "pm.test(\"Email está en la respuesta\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.email).to.equal(\"juan.perez@greenmarket.com\");",
+                  "});",
+                  "",
+                  "pm.test(\"Tiempo de respuesta menor a 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan.perez@greenmarket.com\",\n  \"phone\": \"+56912345678\",\n  \"address\": \"Av. Principal 123, Santiago\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "CP-002: Listar Usuarios (GET)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response es un array\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Cada usuario tiene campos requeridos\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    if (jsonData.length > 0) {",
+                  "        pm.expect(jsonData[0]).to.have.property(\"id\");",
+                  "        pm.expect(jsonData[0]).to.have.property(\"name\");",
+                  "        pm.expect(jsonData[0]).to.have.property(\"email\");",
+                  "    }",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "CP-003: Obtener Usuario por ID (GET)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contiene datos del usuario\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"id\");",
+                  "    pm.expect(jsonData).to.have.property(\"name\");",
+                  "    pm.expect(jsonData).to.have.property(\"email\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            }
+          }
+        },
+        {
+          "name": "CP-004: Usuario Inexistente (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/99999",
+              "host": ["{{base_url}}"],
+              "path": ["users", "99999"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Catálogo de Productos",
+      "item": [
+        {
+          "name": "CP-005: Listar Productos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response es un array de productos\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "    pm.expect(jsonData.length).to.be.above(0);",
+                  "    if (jsonData.length > 0) {",
+                  "        pm.collectionVariables.set(\"product_id\", jsonData[0].id);",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(\"Cada producto tiene campos obligatorios\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    jsonData.forEach(product => {",
+                  "        pm.expect(product).to.have.property(\"id\");",
+                  "        pm.expect(product).to.have.property(\"name\");",
+                  "        pm.expect(product).to.have.property(\"price\");",
+                  "        pm.expect(product).to.have.property(\"category\");",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test(\"Precio es un número positivo\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    jsonData.forEach(product => {",
+                  "        pm.expect(product.price).to.be.a('number');",
+                  "        pm.expect(product.price).to.be.above(0);",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test(\"Tiempo de respuesta menor a 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products?_limit=10&_page=1",
+              "host": ["{{base_url}}"],
+              "path": ["products"],
+              "query": [
+                {
+                  "key": "_limit",
+                  "value": "10"
+                },
+                {
+                  "key": "_page",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "CP-006: Filtrar por Categoría",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Productos filtrados por categoría\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    jsonData.forEach(product => {",
+                  "        pm.expect(product.category).to.equal(\"organic\");",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products?category=organic",
+              "host": ["{{base_url}}"],
+              "path": ["products"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "organic"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "CP-007: Obtener Producto por ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contiene producto con detalles completos\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"id\");",
+                  "    pm.expect(jsonData).to.have.property(\"name\");",
+                  "    pm.expect(jsonData).to.have.property(\"description\");",
+                  "    pm.expect(jsonData).to.have.property(\"price\");",
+                  "    pm.expect(jsonData).to.have.property(\"category\");",
+                  "    pm.expect(jsonData).to.have.property(\"stock\");",
+                  "});",
+                  "",
+                  "pm.test(\"ID del producto coincide\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    const productId = pm.collectionVariables.get(\"product_id\");",
+                  "    pm.expect(jsonData.id).to.equal(productId);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/{{product_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["products", "{{product_id}}"]
+            }
+          }
+        },
+        {
+          "name": "CP-008: Producto No Encontrado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/999999",
+              "host": ["{{base_url}}"],
+              "path": ["products", "999999"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Órdenes de Compra",
+      "item": [
+        {
+          "name": "CP-009: Crear Orden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contiene id de la orden\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"id\");",
+                  "    pm.collectionVariables.set(\"order_id\", jsonData.id);",
+                  "});",
+                  "",
+                  "pm.test(\"Orden contiene items\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"items\");",
+                  "    pm.expect(jsonData.items).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Orden contiene total\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"total\");",
+                  "    pm.expect(jsonData.total).to.be.a('number');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"1\",\n  \"items\": [\n    {\n      \"productId\": \"1\",\n      \"productName\": \"Bolsa Reutilizable\",\n      \"quantity\": 2,\n      \"price\": 5990\n    }\n  ],\n  \"subtotal\": 11980,\n  \"shipping\": 3000,\n  \"total\": 14980,\n  \"status\": \"pending\",\n  \"shippingAddress\": \"Av. Principal 123, Santiago\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": ["{{base_url}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "CP-010: Listar Órdenes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response es un array de órdenes\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": ["{{base_url}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "CP-011: Obtener Orden por ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Orden contiene información completa\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"id\");",
+                  "    pm.expect(jsonData).to.have.property(\"items\");",
+                  "    pm.expect(jsonData).to.have.property(\"total\");",
+                  "    pm.expect(jsonData).to.have.property(\"status\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orders/{{order_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["orders", "{{order_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Reseñas de Clientes",
+      "item": [
+        {
+          "name": "CP-012: Crear Reseña",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contiene id de la reseña\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"id\");",
+                  "});",
+                  "",
+                  "pm.test(\"Rating está en rango válido\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.rating).to.be.within(1, 5);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"1\",\n  \"userId\": \"1\",\n  \"userName\": \"Test User\",\n  \"rating\": 5,\n  \"comment\": \"Excelente producto ecológico\",\n  \"helpful\": 0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["reviews"]
+            }
+          }
+        },
+        {
+          "name": "CP-013: Listar Reseñas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response es un array de reseñas\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["reviews"]
+            }
+          }
+        },
+        {
+          "name": "CP-014: Filtrar Reseñas por Producto",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Reseñas filtradas por producto\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    jsonData.forEach(review => {",
+                  "        pm.expect(review.productId).to.equal(\"1\");",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/reviews?productId=1",
+              "host": ["{{base_url}}"],
+              "path": ["reviews"],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

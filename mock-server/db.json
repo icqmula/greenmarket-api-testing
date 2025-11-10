@@ -1,0 +1,378 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Juan Pérez",
+      "email": "juan.perez@greenmarket.com",
+      "password": "$2a$10$hashed_password_here",
+      "phone": "+56912345678",
+      "address": "Av. Providencia 1234, Santiago",
+      "createdAt": "2025-11-01T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "María González",
+      "email": "maria.gonzalez@greenmarket.com",
+      "password": "$2a$10$hashed_password_here",
+      "phone": "+56987654321",
+      "address": "Calle San Antonio 567, Valparaíso",
+      "createdAt": "2025-11-05T14:30:00Z"
+    },
+    {
+      "id": "ef5b",
+      "name": "Juan Pérez",
+      "email": "juan.perez@greenmarket.com",
+      "phone": "+56912345678",
+      "address": "Av. Principal 123, Santiago"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Bolsa Reutilizable Orgánica",
+      "description": "Bolsa de algodón 100% orgánico certificado, perfecta para compras sustentables",
+      "price": 5990,
+      "category": "organic",
+      "stock": 50,
+      "images": [
+        "https://picsum.photos/400/400?random=1"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 23,
+      "createdAt": "2025-10-15T08:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Botella Térmica Bambú",
+      "description": "Botella térmica de bambú sostenible, mantiene temperatura por 12 horas",
+      "price": 12990,
+      "category": "sustainable",
+      "stock": 30,
+      "images": [
+        "https://picsum.photos/400/400?random=2"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 45,
+      "createdAt": "2025-10-18T09:30:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Kit de Cubiertos Biodegradables",
+      "description": "Set de cubiertos compostables hechos de bambú y almidón de maíz",
+      "price": 3990,
+      "category": "organic",
+      "stock": 100,
+      "images": [
+        "https://picsum.photos/400/400?random=3"
+      ],
+      "rating": 4.5,
+      "reviewsCount": 12,
+      "createdAt": "2025-10-20T11:00:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Jabón Natural de Lavanda",
+      "description": "Jabón artesanal elaborado con aceites esenciales y sin químicos",
+      "price": 2490,
+      "category": "organic",
+      "stock": 75,
+      "images": [
+        "https://picsum.photos/400/400?random=4"
+      ],
+      "rating": 4.7,
+      "reviewsCount": 34,
+      "createdAt": "2025-10-22T13:15:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Macetero de Material Reciclado",
+      "description": "Macetero hecho 100% de plástico reciclado post-consumo",
+      "price": 7990,
+      "category": "sustainable",
+      "stock": 40,
+      "images": [
+        "https://picsum.photos/400/400?random=5"
+      ],
+      "rating": 4.6,
+      "reviewsCount": 18,
+      "createdAt": "2025-10-25T15:45:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Cepillo de Dientes de Bambú",
+      "description": "Cepillo dental biodegradable con cerdas naturales",
+      "price": 1990,
+      "category": "organic",
+      "stock": 120,
+      "images": [
+        "https://picsum.photos/400/400?random=6"
+      ],
+      "rating": 4.4,
+      "reviewsCount": 56,
+      "createdAt": "2025-10-28T16:20:00Z"
+    },
+    {
+      "id": "7",
+      "name": "Set de Bolsas de Malla Reutilizables",
+      "description": "Pack de 5 bolsas de malla orgánica en diferentes tamaños",
+      "price": 8990,
+      "category": "organic",
+      "stock": 60,
+      "images": [
+        "https://picsum.photos/400/400?random=7"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 41,
+      "createdAt": "2025-11-01T10:10:00Z"
+    },
+    {
+      "id": "8",
+      "name": "Velas de Cera de Soja",
+      "description": "Set de 3 velas aromáticas naturales de cera de soja",
+      "price": 9990,
+      "category": "organic",
+      "stock": 35,
+      "images": [
+        "https://picsum.photos/400/400?random=8"
+      ],
+      "rating": 4.8,
+      "reviewsCount": 27,
+      "createdAt": "2025-11-03T11:30:00Z"
+    },
+    {
+      "id": "9",
+      "name": "Compostador Doméstico",
+      "description": "Compostador compacto ideal para balcones y cocinas",
+      "price": 24990,
+      "category": "sustainable",
+      "stock": 15,
+      "images": [
+        "https://picsum.photos/400/400?random=9"
+      ],
+      "rating": 4.7,
+      "reviewsCount": 31,
+      "createdAt": "2025-11-05T12:45:00Z"
+    },
+    {
+      "id": "10",
+      "name": "Shampoo Sólido Natural",
+      "description": "Shampoo en barra sin sulfatos ni parabenos",
+      "price": 4990,
+      "category": "organic",
+      "stock": 80,
+      "images": [
+        "https://picsum.photos/400/400?random=10"
+      ],
+      "rating": 4.6,
+      "reviewsCount": 22,
+      "createdAt": "2025-11-07T14:00:00Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "userId": "1",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Bolsa Reutilizable Orgánica",
+          "quantity": 2,
+          "price": 5990
+        },
+        {
+          "productId": "3",
+          "productName": "Kit de Cubiertos Biodegradables",
+          "quantity": 1,
+          "price": 3990
+        }
+      ],
+      "subtotal": 15970,
+      "shipping": 3000,
+      "total": 18970,
+      "status": "pending",
+      "shippingAddress": "Av. Providencia 1234, Santiago",
+      "paymentMethod": "credit_card",
+      "createdAt": "2025-11-10T10:30:00Z",
+      "updatedAt": "2025-11-10T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "items": [
+        {
+          "productId": "2",
+          "productName": "Botella Térmica Bambú",
+          "quantity": 1,
+          "price": 12990
+        }
+      ],
+      "subtotal": 12990,
+      "shipping": 3000,
+      "total": 15990,
+      "status": "shipped",
+      "shippingAddress": "Calle San Antonio 567, Valparaíso",
+      "paymentMethod": "debit_card",
+      "createdAt": "2025-11-08T15:20:00Z",
+      "updatedAt": "2025-11-09T09:15:00Z"
+    },
+    {
+      "id": "3",
+      "userId": "1",
+      "items": [
+        {
+          "productId": "4",
+          "productName": "Jabón Natural de Lavanda",
+          "quantity": 3,
+          "price": 2490
+        },
+        {
+          "productId": "6",
+          "productName": "Cepillo de Dientes de Bambú",
+          "quantity": 4,
+          "price": 1990
+        }
+      ],
+      "subtotal": 15430,
+      "shipping": 3000,
+      "total": 18430,
+      "status": "delivered",
+      "shippingAddress": "Av. Providencia 1234, Santiago",
+      "paymentMethod": "credit_card",
+      "createdAt": "2025-11-05T11:45:00Z",
+      "updatedAt": "2025-11-07T16:30:00Z"
+    },
+    {
+      "id": "ae15",
+      "items": [
+        {
+          "productId": "1",
+          "quantity": 2
+        }
+      ],
+      "shippingAddress": "Av. Principal 123, Santiago, Chile"
+    },
+    {
+      "id": "a5cd",
+      "items": [
+        {
+          "productId": "1",
+          "quantity": 2
+        }
+      ],
+      "shippingAddress": "Av. Principal 123, Santiago, Chile"
+    },
+    {
+      "id": "19f1",
+      "userId": "1",
+      "items": [
+        {
+          "productId": "1",
+          "productName": "Bolsa Reutilizable",
+          "quantity": 2,
+          "price": 5990
+        }
+      ],
+      "subtotal": 11980,
+      "shipping": 3000,
+      "total": 14980,
+      "status": "pending",
+      "shippingAddress": "Av. Principal 123, Santiago"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "productId": "1",
+      "userId": "1",
+      "userName": "Juan Pérez",
+      "rating": 5,
+      "comment": "Excelente calidad, muy resistente y el algodón se siente premium",
+      "helpful": 12,
+      "createdAt": "2025-11-02T11:00:00Z"
+    },
+    {
+      "id": "2",
+      "productId": "1",
+      "userId": "2",
+      "userName": "María González",
+      "rating": 5,
+      "comment": "Perfecta para el supermercado, recomiendo 100%",
+      "helpful": 8,
+      "createdAt": "2025-11-04T14:30:00Z"
+    },
+    {
+      "id": "3",
+      "productId": "2",
+      "userId": "1",
+      "userName": "Juan Pérez",
+      "rating": 5,
+      "comment": "Mantiene el café caliente toda la mañana, diseño hermoso",
+      "helpful": 15,
+      "createdAt": "2025-11-03T09:15:00Z"
+    },
+    {
+      "id": "4",
+      "productId": "3",
+      "userId": "2",
+      "userName": "María González",
+      "rating": 4,
+      "comment": "Buenos cubiertos, aunque el tenedor podría ser más fuerte",
+      "helpful": 6,
+      "createdAt": "2025-11-06T16:45:00Z"
+    },
+    {
+      "id": "5",
+      "productId": "4",
+      "userId": "1",
+      "userName": "Juan Pérez",
+      "rating": 5,
+      "comment": "Huele increíble y deja la piel muy suave",
+      "helpful": 10,
+      "createdAt": "2025-11-08T10:20:00Z"
+    },
+    {
+      "id": "b6da",
+      "productId": "1",
+      "rating": 5,
+      "comment": "Excelente producto ecológico, muy recomendado"
+    },
+    {
+      "id": "1c2b",
+      "productId": "1",
+      "rating": 5,
+      "comment": "Excelente producto ecológico, muy recomendado"
+    },
+    {
+      "id": "67ce",
+      "productId": "1",
+      "userId": "1",
+      "userName": "Test User",
+      "rating": 5,
+      "comment": "Excelente producto ecológico",
+      "helpful": 0
+    }
+  ],
+  "categories": [
+    {
+      "id": "organic",
+      "name": "Orgánico",
+      "description": "Productos certificados orgánicos",
+      "icon": "leaf"
+    },
+    {
+      "id": "sustainable",
+      "name": "Sustentable",
+      "description": "Productos elaborados con materiales sustentables",
+      "icon": "recycle"
+    },
+    {
+      "id": "zero-waste",
+      "name": "Zero Waste",
+      "description": "Productos que no generan residuos",
+      "icon": "trash-off"
+    }
+  ],
+  "auth": {
+    "tokens": []
+  }
+}
