@@ -1,10 +1,10 @@
 # Proyecto de Validación de API - GreenMarket
 
-## 📋 Descripción
+##  Descripción
 Suite completa de pruebas automatizadas para la API REST de GreenMarket, 
 plataforma de comercio sustentable.
 
-## 🎯 Objetivos Cumplidos
+##  Objetivos Cumplidos
 ✅ Plan de Pruebas completo
 ✅ 17+ Casos de Prueba documentados
 ✅ Colección Postman con 37 aserciones
@@ -12,7 +12,7 @@ plataforma de comercio sustentable.
 ✅ Automatización con Newman
 ✅ Mock Server con json-server
 
-## 📊 Resultados de Pruebas
+##  Resultados de Pruebas
 ```
 ✓ 14 requests ejecutados
 ✓ 37 assertions pasaron
@@ -20,7 +20,7 @@ plataforma de comercio sustentable.
 ✓ Cobertura: 100%
 ```
 
-## 🚀 Ejecución Rápida
+##  Ejecución Rápida
 
 ### Opción 1: Newman (Postman CLI)
 ```bash
@@ -41,7 +41,7 @@ cd rest-assured
 mvn clean test
 ```
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 ```
 ├── postman/              # Colecciones Postman
 ├── rest-assured/         # Tests Java + JUnit
